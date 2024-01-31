@@ -48,26 +48,28 @@ Observable이 여러 번의 구독을 할 수 없다는 것이 아니라 Observe
 
 PublishSubject, BehaviorSubject, ReplaySubject, AsyncSubject 이렇게 4가지 subject가 있다
 
-**PublishSubject**
+- **PublishSubject**
 
-가장 기본적인 Subject이다. 구독을 시작하는 순간부터 이벤트를 옵저버에게 전달하기 때문에, subscribe 이전에 일어난 이벤트를 몰라도 되는 경우에 사용하기 좋다.
+    가장 기본적인 Subject이다. 구독을 시작하는 순간부터 이벤트를 옵저버에게 전달하기 때문에, subscribe 이전에 일어난 이벤트를 몰라도 되는 경우에 사용하기 좋다.
 
-빈 상태로 생성되고, 새로운 element가 subscribe 이후의 event만 subscriber에게 전달된다.
+    빈 상태로 생성되고, 새로운 element가 subscribe 이후의 event만 subscriber에게 전달된다.
 
-**BehaviorSubject**
-PublishSubject와 달리 기본값을 가진 채로 생성되고, 초기값 혹은 최신 element 값을 방출한다. observable이 가장 최근에 발행한 항목을 한번 방출하고 그 이후부터 Obsrvable에 의해 방출된 항목들을 옵저버에게 전달한다.
+- **BehaviorSubject**
 
-behavior subjects는 subscribe가 시작됨과 동시에 최근의 element를 방출하기 때문에 subject가 생성되는 당시에 무조건 초기값을 설정해야 한다는 특징이 있다.
+    PublishSubject와 달리 기본값을 가진 채로 생성되고, 초기값 혹은 최신 element 값을 방출한다. observable이 가장 최근에 발행한 항목을 한번 방출하고 그 이후부터 Obsrvable에 의해 방출된 항목들을 옵저버에게 전달한다.
 
-최신 데이터로 화면을 그리는 경우에 유용하다.
+    behavior subjects는 subscribe가 시작됨과 동시에 최근의 element를 방출하기 때문에 subject가 생성되는 당시에 무조건 초기값을 설정해야 한다는 특징이 있다.
 
-**ReplaySubject**
-정해진 buffer size를 가진 채로 생성되고, 새로운 구독자에게 방출한다.
-최신 이벤트를 버퍼 사이즈에 맞게 저장하고,Observer가 구독할 시 버퍼에 있는 이벤트를 모두 전달한다.
-BehaviorSubject는 가장 최근에 방출된 값을 딱 한번 방출해줬다면 ReplaySubject는 두 개 이상의 이벤트를 저장하고 싶을 때 사용한다. 하지만 초기값을 설정해주지 않기 때문에 아무 항목도 방출하지 않았을 때는 해당 Subject를 구독해도 아무런 값도 방출되지 않는다.
+    최신 데이터로 화면을 그리는 경우에 유용하다.
 
-버퍼의 크기를 직접 지정해주는 만큼 딱 필요한 만큼만 지정해주는 것이 메모리 관리상 중요하다.
+- **ReplaySubject**
 
-**AsyncSubject**
+    정해진 buffer size를 가진 채로 생성되고, 새로운 구독자에게 방출한다.
+    최신 이벤트를 버퍼 사이즈에 맞게 저장하고,Observer가 구독할 시 버퍼에 있는 이벤트를 모두 전달한다.
+    BehaviorSubject는 가장 최근에 방출된 값을 딱 한번 방출해줬다면 ReplaySubject는 두 개 이상의 이벤트를 저장하고 싶을 때 사용한다. 하지만 초기값을 설정해주지 않기 때문에 아무 항목도 방출하지 않았을 때는 해당 Subject를 구독해도 아무런 값도 방출되지 않는다.
 
-completed 이벤트가 전달되기 전까지 어떠한 이벤트도 발생되지 않으며, complete가 되면 가장 최근에 전달된 값을 방출한다.
+    버퍼의 크기를 직접 지정해주는 만큼 딱 필요한 만큼만 지정해주는 것이 메모리 관리상 중요하다.
+
+- **AsyncSubject**
+
+    completed 이벤트가 전달되기 전까지 어떠한 이벤트도 발생되지 않으며, complete가 되면 가장 최근에 전달된 값을 방출한다.

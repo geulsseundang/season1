@@ -1,23 +1,25 @@
 # Fetch Type
 
-## Lazy loading
+### Lazy loading
 
 - 연관된 Entity를 proxy로 조회
 - proxy를 실제로 사용할 때 초기화하면서 데이터베이스 조회
 
-## Eager loading
+### Eager loading
 
 - 연관된 Entity를 즉시 조회
 - Hibernate는 가능하면 SQL join으로 한 번에 조회함
 
 ## Default Fetch Stategy
 
+```
 @ManyToOne, @OneToOne : Eager
 @OneToMany, @ManyToMany : Lazy
+```
 
 - 기본적으로 안전하려면 Lazy 사용해야겠죠!! 왜????
 
-## 겪었던 FetchType.EAGER 중첩으로 인한 Duplicated Key 문제
+## 겪었던 Duplicated Key 문제
 
 ### 현상
 
@@ -73,7 +75,9 @@ Hibernate:
 
 ## 개선 방향
 
-!! Best Practice
+Best Practice
 
-- ~ ToOne : EAGER 사용 가능
-- ~ ToMany : LAZY 사용, EAGER 사용 지양
+```
+~ ToOne : EAGER 사용 가능
+~ ToMany : LAZY 사용, EAGER 사용 지양
+```

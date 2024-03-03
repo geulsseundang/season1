@@ -91,7 +91,7 @@ const SlowComponent = () => {
 
 최초로 `re-render` 를 발생시키는 원인은 `state` 의 변경이며, `props` 의 변경은 무관합니다. 하지만, `props` 의 변경을 비교해 자식 컴포넌트로의 `re-render` 의 전파는 막을 수 있습니다.
 
-`React.memo` 를 사용한 고차컴포넌트는 부모로 부터 전달받은 `props` 들을 얕게 비교하며, 만약 하나라도 변경이 되었다면 `re-render` 가 멈추고 그렇지 않으면 계속 전파됩니다.
+`React.memo` 를 사용한 고차컴포넌트는 부모로 부터 전달받은 `props` 들을 얕게 비교하며, 만약 하나라도 변경이 되었다면 `re-render` 가 전파되고 그렇지 않으면 `re-render` 가 멈춥니다.
 
 ```javascript
 // App
